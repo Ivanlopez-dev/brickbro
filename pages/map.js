@@ -1,53 +1,32 @@
-import AppLayout from '../components/AppLayout';
+import AppLayout from "../components/AppLayout";
+import Button from "../components/Button"
+import Input from "../components/Input"
 
 const Map = () => {
-
   return (
     <>
-    <AppLayout>
-      <form>
-
-      <input 
-            className='input-map'
-            type='text'
-            placeholder='Address'
-
-        />
-        <button
-            className='button-map'
-            type='submit'
-        >Search</button>
-
-      </form>
+      <AppLayout>
+        <img src="/brickbro-logo.png" alt="Logo" />
+        <form>
+          <Input />
+          <Button>Search</Button>
+        </form>
         <h1>Map</h1>
-    </AppLayout>
+      </AppLayout>
 
-        <style jsx>{`
+      <style jsx>{`
+        body,
+        h1 {
+          text-align: center;
+        }
 
-            body, h1 {
-              font-family: 'Space Grotesk', sans-serif;
-              text-align: center;
-            }
-
-            .input-map {
-              width: 45%;
-              padding: 12px 20px;
-              margin: 24px;
-              border: 1px;
-              border-radius: 5px;
-              background-color: #ececec;
-            }
-
-            .button-map {
-              width: 20%;
-              padding: 12px 20px;
-              border: 1px;
-              border-radius: 5px;
-            }
-        `}</style>
+        img {
+          width: 240px;
+          margin: 24px;
+        }
+      `}</style>
     </>
+  );
+};
 
-  )
-}
-
-export default Map
+export default Map;

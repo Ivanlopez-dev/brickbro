@@ -1,71 +1,48 @@
-
-import Head from 'next/head'
-import AppLayout from '../components/AppLayout';
+import Head from "next/head";
+import AppLayout from "../components/AppLayout";
+import Button from "../components/Button";
+import Input from "../components/Input"
 
 const Home = () => {
 
-  return (
+  // const handleClick = () => {}
 
-    <>  
+  return (
+    <>
       <Head>
-            <title>Brîckbro FrontEnd Test</title>
-    
+        <title>Brîckbro FrontEnd Test</title>
       </Head>
 
       <AppLayout>
-      <form>
-
-        <input 
-            className='input-home'
-            type='text'
-            placeholder='Address'
-
-        />
-        <button
-            className='button-home'
-            type='submit'
-        >Search
-        </button>
-
-      </form>
+        <img src="/brickbro-logo.png" alt="Logo" />
+        <form>
+          <Input/>
+          <Button>Search</Button>
+        </form>
         <h1>Home</h1>
       </AppLayout>
 
-        <style jsx>{`
+      <style jsx>{`
+        body,
+        h1 {
+          text-align: center;
+        }
 
-            body, h1 {
-              text-align: center;
-            }
+        img {
+          width: 240px;
+          margin: 24px;
+        }
+      `}</style>
 
-            .input-home {
-              width: 45%;
-              padding: 12px 20px;
-              margin: 24px;
-              border: 1px;
-              border-radius: 5px;
-              background-color: #ececec;
-            }
-
-            .button-home {
-              width: 20%;
-              padding: 12px 20px;
-              border: 1px;
-              border-radius: 5px;
-            }
-        `}</style>
-
-        <style jsx global>{`
-
-            html,
-            body,
-            h1 {
-              font-family: 'Space Grotesk', sans-serif;
-            }
-        `}</style>
-
+      <style jsx global>{`
+        html,
+        body,
+        h1 {
+          font-family: "Space Grotesk", sans-serif;
+        }
+      `}</style>
     </>
+  );
+};
 
-  )
-}
-
-export default Home
+export default Home;
