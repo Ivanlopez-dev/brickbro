@@ -1,13 +1,14 @@
-export default function Button({ children, onClick }) {
+export default function Button({ children }) {
   return (
     <>
-      <input type="text" placeholder="Address">
+      <input id='search' name='search' type="text" placeholder="Address">
         {children}
       </input>
       <style jsx>{`
         input {
-          width: 45%;
-          padding: 12px 20px;
+          height: 40px;
+          width: 80%;
+          padding-left: 10px;
           margin: 24px;
           border: 1px;
           border-radius: 5px;

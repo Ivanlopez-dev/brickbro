@@ -6,7 +6,7 @@ const Map = () => {
   return (
     <>
       <AppLayout>
-        <img src="/brickbro-logo.png" alt="Logo" />
+        <img src='brickbro-logo.png' alt='Logo' />
         <form>
           <Input />
           <Button>Search</Button>
