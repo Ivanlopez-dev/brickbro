@@ -5,6 +5,7 @@ import AppLayout from "../components/AppLayout";
 import Button from "../components/Button";
 import Input from "../components/Input";
 
+
 const Home = () => {
   const [search, setSearch] = useState("");
   const router = useRouter();
@@ -15,7 +16,7 @@ const Home = () => {
     setSearch(event.target.search.value);
     router.push("/map");
 
-    console.log("handleClick", search);
+    console.log(search);
   };
 
   return (
