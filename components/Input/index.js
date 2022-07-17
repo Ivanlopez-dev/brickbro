@@ -1,7 +1,7 @@
 export default function Button({ children }) {
   return (
     <>
-      <input id='search' name='search' type="text" placeholder="Address">
+      <input id='address' name='address' type="text" placeholder="Address">
         {children}
       </input>
       <style jsx>{`

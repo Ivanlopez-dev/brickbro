@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import AppLayout from "../components/AppLayout";
@@ -7,16 +6,18 @@ import Input from "../components/Input";
 
 
 const Home = () => {
-  const [search, setSearch] = useState("");
+  
   const router = useRouter();
 
   const handleClick = (event) => {
     event.preventDefault();
-
-    setSearch(event.target.search.value);
-    router.push("/map");
-
-    console.log(search);
+    
+    router.push(
+      { pathname: '/map',
+       query: { address: event.target.address.value } },
+      'map'
+    );
+    
   };
 
   return (

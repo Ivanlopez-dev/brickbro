@@ -1,18 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import AppLayout from "../components/AppLayout";
-import Button from "../components/Button"
-import Input from "../components/Input"
+import Button from "../components/Button";
+import Input from "../components/Input";
 
 const Map = () => {
+  const [address, setAddress] = useState('');
+  const [addresses, setAddresses] = useState([]);
+  const router = useRouter();
 
-  const [search, setSearch] = useState("");
+  useEffect(() => {
+    setAddress(router.query.address);
+    setAddresses(addresses.push(router.query.address))
+
+    console.log(addresses);
+  }, []);
 
   const handleClick = (event) => {
     event.preventDefault();
 
-    setSearch(event.target.search.value);
+    setAddress(event.target.address.value);
+    setAddresses(addresses.push(event.target.address.value))
 
-    console.log(search);
+    console.log(address);
   };
 
   return (
@@ -20,7 +30,7 @@ const Map = () => {
       <AppLayout>
         <div className="map-wrapper">
           <img src="/brickbro-logo.png" alt="Logo" />
-          <form className='form-wrapper' onSubmit={handleClick}>
+          <form className="form-wrapper" onSubmit={handleClick}>
             <Input />
             <Button>Search</Button>
           </form>
@@ -38,7 +48,6 @@ const Map = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          
         }
 
         .form-wrapper {
@@ -50,7 +59,6 @@ const Map = () => {
 
         img {
           width: 240px;
-          
         }
 
         @media (max-width: 500px) {
