@@ -4,32 +4,28 @@ import AppLayout from "../components/AppLayout";
 import Button from "../components/Button";
 import Input from "../components/Input";
 
-
 const Home = () => {
-  
   const router = useRouter();
 
   const handleClick = (event) => {
     event.preventDefault();
-    
+
     router.push(
-      { pathname: '/map',
-       query: { address: event.target.address.value } },
-      'map'
+      { pathname: "/map", query: { address: event.target.address.value } },
+      "map"
     );
-    
   };
 
   return (
     <>
       <Head>
-        <title>Brîckbro FrontEnd Test</title>
+        <title>Home</title>
       </Head>
 
       <AppLayout>
         <div className="home-wrapper">
           <img src="/brickbro-logo.png" alt="Logo" />
-          <form className='form-wrapper' onSubmit={handleClick}>
+          <form className="form-wrapper" onSubmit={handleClick}>
             <Input />
             <Button>Search</Button>
           </form>
@@ -47,7 +43,6 @@ const Home = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          
         }
 
         .form-wrapper {

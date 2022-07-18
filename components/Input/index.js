@@ -1,7 +1,18 @@
-export default function Button({ children }) {
+export default function Button({ children, setAddress }) {
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    if(setAddress){
+      setAddress(e.target.value);
+
+    }
+
+    console.log(e);
+  };
+
   return (
     <>
-      <input id='address' name='address' type="text" placeholder="Address">
+      <input onChange={handleChange} id='address' name='address' type="text" placeholder="Address">
         {children}
       </input>
       <style jsx>{`

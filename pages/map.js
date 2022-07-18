@@ -1,39 +1,55 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import AppLayout from "../components/AppLayout";
 import Button from "../components/Button";
 import Input from "../components/Input";
 
 const Map = () => {
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState("");
   const [addresses, setAddresses] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    setAddress(router.query.address);
-    setAddresses(addresses.push(router.query.address))
-
-    console.log(addresses);
+    if (!router.query.address) {
+      router.push("/");
+    } else {
+      setAddresses([router.query.address, ...addresses]);
+    }
   }, []);
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  const handleClick = (e) => {
+    e.preventDefault();
 
-    setAddress(event.target.address.value);
-    setAddresses(addresses.push(event.target.address.value))
+    if (address != "" && address) {
+      setAddresses([address, ...addresses]);
+    }
 
-    console.log(address);
+    console.log(addresses);
   };
 
   return (
     <>
+      <Head>
+        <title>Map</title>
+      </Head>
+
       <AppLayout>
         <div className="map-wrapper">
           <img src="/brickbro-logo.png" alt="Logo" />
           <form className="form-wrapper" onSubmit={handleClick}>
-            <Input />
+            <Input setAddress={setAddress} />
             <Button>Search</Button>
           </form>
+
+          <div className="addresses-wrapper">
+            <h4>Búsquedas</h4>
+            {addresses.length >= 1
+              ? addresses.map((address, idx) => {
+                  return <p key={idx}>{address}</p>;
+                })
+              : "Test"}
+          </div>
           <h1>Map</h1>
         </div>
       </AppLayout>
@@ -59,6 +75,25 @@ const Map = () => {
 
         img {
           width: 240px;
+        }
+
+        .addresses-wrapper {
+          width: 86%;
+          max-width: 1200px;
+          border: 2px solid darkgray;
+          border-radius: 9px;
+        }
+
+        h4 {
+          padding-left: 20px;
+          font-size: 12;
+          color: gray;
+        }
+
+        p {
+          padding-left: 20px;
+          color: black;
+          font-weight: bold;
         }
 
         @media (max-width: 500px) {
