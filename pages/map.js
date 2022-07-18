@@ -107,7 +107,7 @@ const Map = () => {
         #map {
           height: 400px;
           width: 86%;
-          max-width: 1065px;
+          max-width: 1200px;
           margin-bottom: 50px;
         }
 
