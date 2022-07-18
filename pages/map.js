@@ -16,8 +16,9 @@ const Map = () => {
 
   useEffect(() => {
       setAddresses([router?.query?.address, ...addresses]);
-    
+      console.log(process.env.customKey)
   }, []);
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -37,8 +38,8 @@ const Map = () => {
 
       <Script
         strategy="lazyOnload"
-        async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjEDH52-2gtlTrvn4645m1VopwsiU8OrA&callback=initMap"
+        async='false'
+        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_APIKEY}&callback=initMap`}
       ></Script>
 
       <AppLayout>
