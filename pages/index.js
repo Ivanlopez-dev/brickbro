@@ -29,7 +29,6 @@ const Home = () => {
             <Input />
             <Button>Search</Button>
           </form>
-          <h1>Home</h1>
         </div>
       </AppLayout>
 

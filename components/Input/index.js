@@ -4,10 +4,7 @@ export default function Button({ children, setAddress }) {
     e.preventDefault();
     if(setAddress){
       setAddress(e.target.value);
-
     }
-
-    console.log(e);
   };
 
   return (

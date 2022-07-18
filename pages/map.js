@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Script from 'next/script'
 import Head from "next/head";
 import AppLayout from "../components/AppLayout";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import { codeAddress } from "./utils/utils.js"
+import { initMap } from "../public/sc.js"
+
 
 const Map = () => {
   const [address, setAddress] = useState("");
   const [addresses, setAddresses] = useState([]);
+ 
+
   const router = useRouter();
 
   useEffect(() => {
@@ -16,23 +22,38 @@ const Map = () => {
     } else {
       setAddresses([router.query.address, ...addresses]);
     }
+
   }, []);
+    
 
   const handleClick = (e) => {
     e.preventDefault();
 
     if (address != "" && address) {
       setAddresses([address, ...addresses]);
+      codeAddress( address )
     }
 
     console.log(addresses);
   };
 
+
   return (
     <>
       <Head>
         <title>Map</title>
+       
+       
       </Head>
+        <Script src='sc.js' strategy='lazyOnload'>
+            
+        </Script>
+
+        <Script
+                strategy='lazyOnload'
+                async
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjEDH52-2gtlTrvn4645m1VopwsiU8OrA&callback=initMap">
+        </Script>
 
       <AppLayout>
         <div className="map-wrapper">
@@ -41,6 +62,8 @@ const Map = () => {
             <Input setAddress={setAddress} />
             <Button>Search</Button>
           </form>
+          <h3>My Google Maps Demo</h3>
+          <div id="map" ></div>
 
           <div className="addresses-wrapper">
             <h4>Búsquedas</h4>
@@ -50,9 +73,10 @@ const Map = () => {
                 })
               : "Test"}
           </div>
-          <h1>Map</h1>
         </div>
+        
       </AppLayout>
+      
 
       <style jsx>{`
         body,
@@ -94,6 +118,15 @@ const Map = () => {
           padding-left: 20px;
           color: black;
           font-weight: bold;
+        }
+
+       
+        #map {
+          height: 400px;
+          width: 86%;
+          max-width: 1065px;
+          margin-bottom: 50px;
+          
         }
 
         @media (max-width: 500px) {
